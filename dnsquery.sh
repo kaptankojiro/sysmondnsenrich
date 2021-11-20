@@ -8,12 +8,6 @@ echo ""
 wget http://s3.amazonaws.com/alexa-static/top-1m.csv.zip
 unzip top-1m.csv.zip
 
-#!/bin/bash
-figlet -c -w 100 Sysmon DNS Threat Hunting
-echo ""
-echo "This scripts requires --> whois,freq.py,Alexa top1-m.csv,figlet,libreoffice,jq"
-echo ""
-
 rm result.csv
 echo DomainName,EntropyResult[1],EntropyResult[2],RegistrationDate,UpdatedDate,AlexaWordCount,IP,Region,City,AlienVault,Talos,ThreatCrowd > result.csv
 cat dnsQueries.csv | sort | uniq | grep -v "_" | grep "\b$word\." | grep -v "," > sysmonDNSlist.txt
